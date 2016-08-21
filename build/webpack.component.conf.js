@@ -9,8 +9,10 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
+var filename = 'vue-accordion'
+
 var webpackConfig = merge(baseWebpackConfig, {
-  entry: './src/accordion/index.js',
+  entry: './src',
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
   },
@@ -18,7 +20,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     library: 'VueAccordion',
     libraryTarget: 'umd',
-    filename: 'vue-accordion.js',
+    filename: filename + '.js',
     path: path.resolve(__dirname, '../release')
   },
   vue: {
@@ -39,7 +41,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     // extract css into its own file
-    new ExtractTextPlugin('vue-accordion.css')
+    new ExtractTextPlugin(filename + '.css')
   ]
 })
 
