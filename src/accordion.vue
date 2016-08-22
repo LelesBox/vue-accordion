@@ -1,13 +1,13 @@
 <style>
 /*这里设定z-index的功能自己体会*/
-.container {
+.vueAccordion-container {
     position: relative;
     z-index: 999;
 }
 </style>
 
 <template>
-  <div class="container">
+  <div class="vueAccordion-container">
       <slot></slot>
   </div>
 </template>

@@ -59,11 +59,11 @@
         <slot name="header">
             <div class="vueAccordion-header">
                 <div class="vueAccordion-title" v-text="title"></div>
-                <svg class="vueAccordion-icon" viewBox="0,0,22,22" v-show="!open">
+                <svg class="vueAccordion-icon" viewBox="0,0,22,22" v-show="!open&&!iconHide">
                     <path d="M 0 11 L 22 11" stroke-width="2" stroke="#5F5F5F"></path>
                     <path d="M 11 0 L 11 22" stroke-width="2" stroke="#5F5F5F"></path>
                 </svg>
-                <svg class="vueAccordion-icon" viewBox="0,0,22,22" v-show="open">
+                <svg class="vueAccordion-icon" viewBox="0,0,22,22" v-show="open&&!iconHide">
                     <path d="M 0 11 L 22 11" stroke-width="2" stroke="#5F5F5F"></path>
                 </svg>
             </div>
@@ -90,6 +90,10 @@ export default {
     },
     index: {
       type: Number
+    },
+    iconHide: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

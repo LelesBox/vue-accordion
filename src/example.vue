@@ -1,47 +1,59 @@
 <template>
-
 <accordion :auto-shrink="true">
-    <accordion-item title="1.SHIPPING">
-      <div slot="header" class="header">
-        <div class="title">1.CUSTOM ITEM HEADER</div>
-        <svg class="icon" viewBox="0,0,22,22" v-show="!open">
-        <path d="M 0 11 L 22 11" stroke-width="2" stroke="#5F5F5F"></path>
-        <path d="M 11 0 L 11 22" stroke-width="2" stroke="#5F5F5F"></path>
-        </svg>
-        <svg class="icon" viewBox="0,0,22,22" v-show="open">
-        <path d="M 0 11 L 22 11" stroke-width="2" stroke="#5F5F5F"></path>
-        </svg>
-      </div>
-        <div style="height: 400px;width: 100%;background: yellow">
-            asd
-        </div>
-        <div style="height: 400px;width: 100%;background: green">
-            zxczxc
-        </div>
-    </accordion-item>
-    <accordion-item title="2.BILLING">
-        <div style="height: 400px;width: 100%;background: red">
-            zxcz阿斯达xc
-        </div>
-    </accordion-item>
-    <accordion-item title="3.REVIEW">
-        <div style="height: 200px;width: 100%;background: red">
-            zxczxllxlxlxlxlxlxl
-        </div>
-    </accordion-item>
-    <accordion-item title="3.TEST">
-        <div style="height: 400px;width: 100%;background: red">
-            zxcz阿斯达xc
+    <accordion-item :title="menu.title" v-for="menu in menus" :icon-hide="menu.subtitle.length===0">
+        <div v-for="sub in menu.subtitle" style="height:50px;line-height:50px;margin-left:70px;">
+          {{sub.title}}
         </div>
     </accordion-item>
 </accordion>
-
 </template>
 
 <script type="text/ecmascript-6">
 require('../release/vue-accordion.css')
-import { accordion, accordionItem } from '../release/vue-accordion'
+// import { accordion, accordionItem } from '../release/vue-accordion'
+import { accordion, accordionItem } from '.'
 export default {
+  data: function () {
+    return {
+      menus: [
+        {
+          title: 'DASHBOARD',
+          subtitle: [
+            {
+              title: 'A'
+            },
+            {
+              title: 'B'
+            },
+            {
+              title: 'C'
+            }
+          ]
+        },
+        {
+          title: 'CHALLENGES',
+          subtitle: [
+            {
+              title: 'My Challenge'
+            },
+            {
+              title: 'All Challenge'
+            },
+            {
+              title: 'Find Challenge'
+            },
+            {
+              title: 'Create A Challenge'
+            }
+          ]
+        },
+        {
+          title: 'ANALYSIS',
+          subtitle: []
+        }
+      ]
+    }
+  },
   components: {
     accordion,
     accordionItem
@@ -50,6 +62,10 @@ export default {
 </script>
 
 <style lang="scss">
+body{
+   
+}
+
 .header {
   position: relative;
   width: 100%;
