@@ -63,7 +63,7 @@ export default {
 
 <style lang="scss">
 body{
-   
+
 }
 
 .header {
